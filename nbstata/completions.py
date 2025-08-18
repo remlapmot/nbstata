@@ -66,7 +66,7 @@ def get_file_paths(self, chunk):
         user_starts = chunk
 
     # Replace globals with their values
-    globals_re = r'\$\{?((?![0-9_])\w{1,32})\}?'
+    globals_re = r'${?((?![0-9_])w{1,32})}?'
     try:
         folder = re.sub(
             globals_re, 
