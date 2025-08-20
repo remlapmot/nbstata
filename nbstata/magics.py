@@ -14,7 +14,8 @@ import nbstata.browse as browse
 from fastcore.basics import patch_to
 import re
 import urllib
-from pkg_resources import resource_filename
+from importlib_resources import files, as_file
+from contextlib import ExitStack
 from bs4 import BeautifulSoup as bs
 import configparser
 
@@ -71,9 +72,9 @@ class StataMagics():
     
     abbrev_dict = _construct_abbrev_dict()
     
-    csshelp_default = resource_filename(
-        'nbstata', 'css/_StataKernelHelpDefault.css'
-    )
+    file_manager = ExitStack()
+    ref = files('nbstata') / 'css' / '_StataKernelHelpDefault.css'
+    csshelp_default = file_manager.enter_context(as_file(ref))
 
     def magic_quietly(self, code, kernel, cell):
         """Suppress all display for the current cell."""
