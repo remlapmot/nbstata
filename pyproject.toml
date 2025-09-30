@@ -1,0 +1,13 @@
+[project]
+name="nbstata"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python=">=3.9"
+dependencies = [
+    "importlib-resources>=6.5.2",
+    "jupyter>=1.1.1",
+    "nbdev>=2.4.5",
+    "numpy>=2.0.2",
+    "packaging>=25.0",
+]
