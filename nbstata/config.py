@@ -114,8 +114,7 @@ def find_edition(stata_dir):
 
 # %% ../nbs/01_config.ipynb 25
 def set_pystata_path(stata_dir=None):
-    stata_dir = stata_dir.strip('"')
-    stata_dir = stata_dir.replace("'", "")
+    stata_dir = stata_dir.strip('"\'')
     if stata_dir is None:
         stata_dir, _ = find_dir_edition()
     if not os.path.isdir(stata_dir):
