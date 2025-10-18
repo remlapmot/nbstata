@@ -1101,7 +1101,9 @@ wheels = [
 name = "nbstata"
 version = "0.1.0"
 source = { virtual = "." }
-dependencies = [
+
+[package.dev-dependencies]
+dev = [
     { name = "jupyterlab" },
     { name = "nbdev" },
     { name = "numpy", version = "2.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
@@ -1110,7 +1112,9 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [
+
+[package.metadata.requires-dev]
+dev = [
     { name = "jupyterlab", specifier = ">=4.4.6" },
     { name = "nbdev", specifier = ">=2.4.6" },
     { name = "numpy", specifier = ">=2.0.2" },
