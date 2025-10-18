@@ -1,9 +1,9 @@
+uv venv --python 3.14
 uv init
-uv venv .venvpy314 --python 3.14
-source .venvpy314/bin/activate
-uv add --active jupyter nbdev numpy
+source .venv/bin/activate
+uv add jupyterlab nbdev
 nbdev_install_hooks
-uv pip install -e '.[dev]'
+uv pip install -e .
 jupyter notebook nbs/09_magics.ipynb
 nbdev_prepare
 python -m nbstata.install --sys-prefix
