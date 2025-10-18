@@ -6,5 +6,9 @@ jupyter: nbstata
 ---
 
 ```{stata}
+di 1 + 1
+```
+
+```{stata}
 about
 ```
