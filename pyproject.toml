@@ -3,11 +3,11 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nbstata"
+name="nbstata"
 version = "0.8.3.dev0"
 description = "A Jupyter kernel for Stata built on pystata"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python=">=3.10"
 license = { text = "GPL-3.0-only" }
 authors = [{ name = "Tim Huegerich" }]
 classifiers = [
