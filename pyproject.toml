@@ -26,6 +26,7 @@ dependencies = [
   "jupyter-client>=7",
   "nbclient>=0.10.2",
   "nbformat>=5.10.4",
+  "numpy>=2.2.6",
   "packaging>=23", # for Version parsing (instead of distutils/pkg_resources)
   "pyyaml>=6.0.2",
 ]
