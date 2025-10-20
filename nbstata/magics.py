@@ -14,7 +14,7 @@ import nbstata.browse as browse
 from fastcore.basics import patch_to
 import re
 import urllib
-from nbstata._resources import resource_path
+from ._resources import resource_path
 from bs4 import BeautifulSoup as bs
 import configparser
 
