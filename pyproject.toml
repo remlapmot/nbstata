@@ -45,3 +45,8 @@ packages = { find = { where = ["."], include = ["nbstata*"] } }
 minversion = "7.0"
 addopts = "-q"
 testpaths = ["nbs"]
+
+[dependency-groups]
+dev = [
+  "nbdev>=2.4.6",
+]
