@@ -64,8 +64,8 @@ def macro_expand(s):
 
 # %% ../nbs/02_stata.ipynb 35
 def run_direct(cmds, quietly=False, echo=False, inline=True):
-    import pystata
-    return pystata.stata.run(cmds, quietly, echo, inline)
+    from pystata.stata import run
+    return run(cmds, quietly, echo, inline)
 
 # %% ../nbs/02_stata.ipynb 43
 def run_single(cmd, echo=False):
