@@ -9,7 +9,7 @@ __all__ = ['run_direct_cleaned', 'run_sfi', 'SelectVar', 'IndexVar', 'run_as_pro
 
 # %% ../nbs/03_stata_more.ipynb 4
 from .misc_utils import print_red
-from .stata import run_direct, run_single, get_local, set_local, drop_var, stata_formatted
+from .runstata import run_direct, run_single, get_local, set_local, drop_var, stata_formatted
 from textwrap import dedent
 import functools
 from contextlib import redirect_stdout

@@ -7,7 +7,7 @@ __all__ = ['StataSession', 'warn_re_unclosed_comment_block_if_needed']
 
 # %% ../nbs/08_stata_session.ipynb 4
 from .misc_utils import print_red
-from .stata import run_direct, get_local, get_scalar
+from .runstata import run_direct, get_local, get_scalar
 from .stata_more import diverted_stata_output_quicker, local_names, run_sfi
 from .stata_more import get_local_dict as _get_local_dict
 from nbstata.code_utils import (

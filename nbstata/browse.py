@@ -8,7 +8,7 @@ __all__ = ['matchparts', 'in_range', 'parse_browse_magic', 'get_df', 'headtail_d
 
 # %% ../nbs/07_browse.ipynb 3
 from .misc_utils import print_red
-from .stata import run_single
+from .runstata import run_single
 from .stata_more import SelectVar, run_direct_cleaned, diverted_stata_output_quicker, run_sfi
 from .pandas import better_pdataframe_from_data
 from fastcore.basics import patch_to

@@ -6,7 +6,7 @@
 __all__ = ['better_dataframe_from_stata', 'better_pdataframe_from_data', 'better_pdataframe_from_frame']
 
 # %% ../nbs/06_pandas.ipynb 3
-from .stata import stata_formatted
+from .runstata import stata_formatted
 from .stata_more import IndexVar
 
 # %% ../nbs/06_pandas.ipynb 6

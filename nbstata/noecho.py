@@ -7,7 +7,7 @@ __all__ = ['parse_sreturn', 'run_as_program_w_locals', 'run_non_prog_noecho', 'r
 
 # %% ../nbs/05_noecho.ipynb 4
 from .code_utils import break_out_prog_blocks, valid_single_line_code, local_def_in, preserve_restore_in
-from .stata import run_direct, set_local, run_single, get_global
+from .runstata import run_direct, set_local, run_single, get_global
 from . import stata_more as sm 
 from textwrap import dedent
 import re

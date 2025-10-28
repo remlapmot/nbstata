@@ -6,7 +6,7 @@
 __all__ = ['relevant_suggestion_keys', 'CompletionsManager']
 
 # %% ../nbs/11_completions.ipynb 4
-from .stata import get_global, pwd
+from .runstata import get_global, pwd
 from .stata_session import StataSession
 from .magics import StataMagics
 from .completion_env import CompletionEnv, Env

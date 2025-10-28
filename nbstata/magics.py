@@ -8,7 +8,7 @@ __all__ = ['print_kernel', 'StataMagics', 'Frame']
 # %% ../nbs/09_magics.ipynb 3
 from .config import Config
 from .misc_utils import print_red
-from .stata import obs_count, macro_expand, get_global
+from .runstata import obs_count, macro_expand, get_global
 from .stata_session import warn_re_unclosed_comment_block_if_needed
 import nbstata.browse as browse
 from fastcore.basics import patch_to
