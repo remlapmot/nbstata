@@ -24,12 +24,14 @@ classifiers = [
 dependencies = [
   "bs4>=0.0.2",
   "fastcore>=1.8.13",
+  "ipydatagrid>=1.4.0",
   "ipykernel>=6",
   "jupyter-client>=7",
   "nbclient>=0.10.2",
   "nbformat>=5.10.4",
   "numpy>=2.2.6",
   "packaging>=23", # for Version parsing (instead of distutils/pkg_resources)
+  "pandas>=2.3.3",
   "pyyaml>=6.0.2",
 ]
 
