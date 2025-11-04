@@ -19,6 +19,9 @@ import configparser
 import os
 import pystata
 
+if os.name == 'nt':
+    import winreg
+
 # %% ../nbs/01_config.ipynb 8
 def _win_find_path(_dir=None):
     if _dir is None:
@@ -36,7 +39,6 @@ def _win_find_path(_dir=None):
             if executables:
                 return str(executables[0])
     # Otherwise, try old way
-    import winreg
     reg = winreg.ConnectRegistry(None, winreg.HKEY_CLASSES_ROOT)
     subkey = r'Stata17Do\shell\do\command'
     try:
