@@ -10,69 +10,63 @@ __all__ = ['get_local', 'set_local', 'get_global', 'get_scalar', 'stata_formatte
 from .misc_utils import print_red
 from contextlib import redirect_stdout
 from io import StringIO
+if __name__ == "__main__":
+    from pystata import stata
+    from sfi import Data, Macro, Scalar, SFIToolkit
 
 # %% ../nbs/02_runstata.ipynb 9
 def get_local(name):
-    import sfi
-    return sfi.Macro.getLocal(name)
+    return Macro.getLocal(name)
 
 # %% ../nbs/02_runstata.ipynb 11
 def set_local(name, value):
-    import sfi
-    return sfi.Macro.setLocal(name, value)
+    return Macro.setLocal(name, value)
 
 # %% ../nbs/02_runstata.ipynb 13
 def get_global(name):
-    import sfi
-    return sfi.Macro.getGlobal(name)
+    return Macro.getGlobal(name)
 
 # %% ../nbs/02_runstata.ipynb 15
 def get_scalar(name):
-    import sfi
-    return sfi.Scalar.getValue(name)
+    return Scalar.getValue(name)
 
 # %% ../nbs/02_runstata.ipynb 17
 def stata_formatted(value, s_format):
-    import sfi
-    return sfi.SFIToolkit.formatValue(value, s_format)
+    return SFIToolkit.formatValue(value, s_format)
 
 # %% ../nbs/02_runstata.ipynb 19
 def variable_names():
-    from sfi import Data
     return [Data.getVarName(i) for i in range(Data.getVarCount())]
 
 # %% ../nbs/02_runstata.ipynb 23
 def drop_var(name):
-    import sfi
-    sfi.Data.dropVar(name)
+    Data.dropVar(name)
 
 # %% ../nbs/02_runstata.ipynb 26
 def obs_count():
     """Count the number of observations"""
-    import sfi
-    return sfi.Data.getObsTotal()
+    return Data.getObsTotal()
 
 # %% ../nbs/02_runstata.ipynb 29
 def pwd():
-    from sfi import SFIToolkit
     return SFIToolkit.getWorkingDir()
 
 # %% ../nbs/02_runstata.ipynb 32
 def macro_expand(s):
-    from sfi import SFIToolkit
     return SFIToolkit.macroExpand(s)
 
 # %% ../nbs/02_runstata.ipynb 35
 def run_direct(cmds, quietly=False, echo=False, inline=True):
-    import pystata
-    return pystata.stata.run(cmds, quietly, echo, inline)
+    print(f"pystata module: {pystata}")
+    print(f"pystata file: {pystata.__file__}")
+    print(f"pystata attributes: {dir(pystata)}")
+    return stata.run(cmds, quietly, echo, inline)
 
 # %% ../nbs/02_runstata.ipynb 43
 def run_single(cmd, echo=False):
-    import sfi
     try:
-        sfi.SFIToolkit.stata(cmd, echo)
+        SFIToolkit.stata(cmd, echo)
     except Exception as e:
         with redirect_stdout(StringIO()) as diverted:
-            sfi.SFIToolkit.stata("", echo)
+            SFIToolkit.stata("", echo)
         raise SyntaxError(diverted.getvalue())
