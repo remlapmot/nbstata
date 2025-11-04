@@ -15,6 +15,8 @@ import functools
 from contextlib import redirect_stdout
 from io import StringIO
 import re
+if __name__ == "__main__":
+    from sfi import SFIToolkit
 
 # %% ../nbs/03_stata_more.ipynb 8
 def run_direct_cleaned(cmds, quietly=False, echo=False, inline=True):
@@ -41,14 +43,13 @@ def run_direct_cleaned(cmds, quietly=False, echo=False, inline=True):
 
 # %% ../nbs/03_stata_more.ipynb 30
 def run_sfi(std_code, echo=False, show_exc_warning=True):
-    import sfi
     cmds = std_code.splitlines()
     for i, cmd in enumerate(cmds):
         try:
-            sfi.SFIToolkit.stata(cmd, echo)
+            SFIToolkit.stata(cmd, echo)
         except Exception as e:
             if show_exc_warning:
-                print_red(f"run_sfi (sfi.SFIToolkit.stata) error: {repr(e)}")
+                print_red(f"run_sfi (SFIToolkit.stata) error: {repr(e)}")
             remaining_code = "\n".join(cmds[i:])
             run_direct(remaining_code, echo=echo)
             break
@@ -59,10 +60,9 @@ class SelectVar():
     varname = None
     
     def __init__(self, stata_if_code):
-        import sfi
         condition = stata_if_code.replace('if ', '', 1).strip()
         if condition:
-            self.varname = sfi.SFIToolkit.getTempName()
+            self.varname = SFIToolkit.getTempName()
             cmd = f"quietly gen {self.varname} = cond({condition},1,0)"
             run_single(cmd)
 
@@ -81,8 +81,7 @@ class SelectVar():
 class IndexVar:
     """Class for generating Stata index var for use with pandas"""
     def __enter__(self):
-        import sfi
-        self.idx_var = sfi.SFIToolkit.getTempName()
+        self.idx_var = SFIToolkit.getTempName()
         run_single(f"gen {self.idx_var} = _n")
         return self.idx_var
     
