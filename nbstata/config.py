@@ -16,6 +16,8 @@ from shutil import which
 from pathlib import Path
 from packaging import version
 import configparser
+import os
+import pystata
 
 # %% ../nbs/01_config.ipynb 8
 def _win_find_path(_dir=None):
@@ -134,7 +136,6 @@ def launch_stata(stata_dir=None, edition=None, splash=True):
     elif edition is None:
         edition = find_edition(stata_dir)
     set_pystata_path(stata_dir)
-    import pystata
     try:
         if version.parse(pystata.__version__) >= version.parse("0.1.1"):
             # Splash message control is a new feature of pystata-0.1.1
@@ -146,14 +147,12 @@ def launch_stata(stata_dir=None, edition=None, splash=True):
 
 # %% ../nbs/01_config.ipynb 35
 def set_graph_format(gformat):
-    import pystata
     if gformat == 'pystata':
         gformat = 'svg' # pystata default
     pystata.config.set_graph_format(gformat)
 
 # %% ../nbs/01_config.ipynb 37
 def _set_graph_size(width, height):
-    import pystata
     pystata.config.set_graph_size(width, height)
 
 # %% ../nbs/01_config.ipynb 41
@@ -212,7 +211,6 @@ class Config:
         return self.env['echo'] == 'True'
     
     def display_status(self):
-        import pystata
         pystata.config.status()
         print(f"""
       echo                   {self.env['echo']}
