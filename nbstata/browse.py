@@ -12,6 +12,9 @@ from .runstata import run_single
 from .stata_more import SelectVar, run_direct_cleaned, diverted_stata_output_quicker, run_sfi
 from .pandas import better_pdataframe_from_data
 from fastcore.basics import patch_to
+from IPython.core.display import HTML
+from ipydatagrid import DataGrid, TextRenderer
+from numpy import inf, nan
 import re
 
 # %% ../nbs/07_browse.ipynb 6
@@ -115,7 +118,6 @@ def parse_browse_magic(code):
 
 # %% ../nbs/07_browse.ipynb 26
 def _parse_df_params(code, count, browse=False, tail=False):
-    from numpy import inf
     N, var, if_code, in_code, nolabels, noformat = parse_browse_magic(code)
     sformat = not noformat
     valuelabel = not nolabels
@@ -161,7 +163,6 @@ def get_df(obs_range, var, stata_if_code, missingval, valuelabel, sformat):
 
 # %% ../nbs/07_browse.ipynb 29
 def headtail_df_params(code, count, missing_config, tail=False):
-    from numpy import nan
     custom_missingval = missing_config != 'pandas'
     missingval = missing_config if custom_missingval else nan
     obs_range, var, stata_if_code, valuelabel, sformat = (
@@ -189,7 +190,6 @@ def headtail_get_df(obs_range, var, stata_if_code, missingval, valuelabel, sform
 
 # %% ../nbs/07_browse.ipynb 44
 def browse_df_params(code, count, missing_config):
-    from numpy import nan
     custom_missingval = missing_config != 'pandas'
     missingval = missing_config if custom_missingval else nan
     obs_range, var, stata_if_code, valuelabel, sformat = (
@@ -199,12 +199,10 @@ def browse_df_params(code, count, missing_config):
 
 # %% ../nbs/07_browse.ipynb 52
 def set_ipydatagrid_height():
-    from IPython.core.display import HTML
     display(HTML("<style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>"))
 
 # %% ../nbs/07_browse.ipynb 53
 def display_df_as_ipydatagrid(df, auto_height=True):
-    from ipydatagrid import DataGrid, TextRenderer
     i_renderer = TextRenderer(horizontal_alignment="right", background_color="rgb(243, 243, 243)")
     d_renderer = TextRenderer(horizontal_alignment="right")
     h_renderer = TextRenderer(horizontal_alignment="center")
