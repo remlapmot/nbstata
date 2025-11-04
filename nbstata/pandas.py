@@ -8,10 +8,14 @@ __all__ = ['better_dataframe_from_stata', 'better_pdataframe_from_data', 'better
 # %% ../nbs/06_pandas.ipynb 3
 from .runstata import stata_formatted
 from .stata_more import IndexVar
+from numpy import nan
+import pandas as pd
+if __name__ == "__main__":
+    import sfi
+    from pystata import stata
 
 # %% ../nbs/06_pandas.ipynb 6
 def _better_dataframe(hdl, var, obs, selectvar, valuelabel, missingval):
-    import pandas as pd
     with IndexVar() as idx_var:
         data = hdl.getAsDict(var, obs, selectvar, valuelabel, missingval)
         if not data:
@@ -28,7 +32,6 @@ def _better_dataframe(hdl, var, obs, selectvar, valuelabel, missingval):
 
 # %% ../nbs/06_pandas.ipynb 17
 def _simple_dataframe_from_stata(stfr, var, valuelabel, missingval):
-    from pystata import stata
     if stfr is None:
         df = stata.pdataframe_from_data(var=var, valuelabel=valuelabel, missingval=missingval)
     else:
@@ -38,9 +41,6 @@ def _simple_dataframe_from_stata(stfr, var, valuelabel, missingval):
 
 # %% ../nbs/06_pandas.ipynb 20
 def better_dataframe_from_stata(stfr, var, obs, selectvar, valuelabel, missingval, sformat):
-    from numpy import nan
-    import pandas as pd
-    import sfi
     hdl = sfi.Data if stfr is None else sfi.Frame.connect(stfr)
     custom_index_not_needed = obs is None and not selectvar
     if custom_index_not_needed:
@@ -66,14 +66,12 @@ def better_dataframe_from_stata(stfr, var, obs, selectvar, valuelabel, missingva
 
 # %% ../nbs/06_pandas.ipynb 21
 def better_pdataframe_from_data(var=None, obs=None, selectvar=None, valuelabel=False, missingval=None, sformat=False):
-    from numpy import nan
     if missingval is None:
         missingval = nan
     return better_dataframe_from_stata(None, var, obs, selectvar, valuelabel, missingval, sformat)
 
 # %% ../nbs/06_pandas.ipynb 22
 def better_pdataframe_from_frame(stfr, var=None, obs=None, selectvar=None, valuelabel=False, missingval=None, sformat=False):
-    from numpy import nan
     if missingval is None:
         missingval = nan
     return better_dataframe_from_stata(stfr, var, obs, selectvar, valuelabel, missingval, sformat)
