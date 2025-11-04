@@ -10,8 +10,10 @@ __all__ = ['get_local', 'set_local', 'get_global', 'get_scalar', 'stata_formatte
 from .misc_utils import print_red
 from contextlib import redirect_stdout
 from io import StringIO
+
+import pystata
+
 if __name__ == "__main__":
-    from pystata import stata
     from sfi import Data, Macro, Scalar, SFIToolkit
 
 # %% ../nbs/02_runstata.ipynb 9
@@ -60,7 +62,7 @@ def run_direct(cmds, quietly=False, echo=False, inline=True):
     # print(f"pystata module: {pystata}")
     # print(f"pystata file: {pystata.__file__}")
     # print(f"pystata attributes: {dir(pystata)}")
-    return stata.run(cmds, quietly, echo, inline)
+    return pystata.stata.run(cmds, quietly, echo, inline)
 
 # %% ../nbs/02_runstata.ipynb 43
 def run_single(cmd, echo=False):

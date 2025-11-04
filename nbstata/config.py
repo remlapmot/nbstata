@@ -16,10 +16,12 @@ from shutil import which
 from pathlib import Path
 from packaging import version
 import configparser
-import os
-if __name__ == "__main__":
+try:
     import pystata
+except ImportError:
+    pass
 
+import os
 if os.name == 'nt':
     import winreg
 
