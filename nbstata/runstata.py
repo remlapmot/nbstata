@@ -57,9 +57,9 @@ def macro_expand(s):
 
 # %% ../nbs/02_runstata.ipynb 35
 def run_direct(cmds, quietly=False, echo=False, inline=True):
-    print(f"pystata module: {pystata}")
-    print(f"pystata file: {pystata.__file__}")
-    print(f"pystata attributes: {dir(pystata)}")
+    # print(f"pystata module: {pystata}")
+    # print(f"pystata file: {pystata.__file__}")
+    # print(f"pystata attributes: {dir(pystata)}")
     return stata.run(cmds, quietly, echo, inline)
 
 # %% ../nbs/02_runstata.ipynb 43
