@@ -17,7 +17,8 @@ from pathlib import Path
 from packaging import version
 import configparser
 import os
-import pystata
+if __name__ == "__main__":
+    import pystata
 
 if os.name == 'nt':
     import winreg
